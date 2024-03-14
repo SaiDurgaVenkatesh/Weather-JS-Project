@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 90vh;
+            gap: 50px;
+            background: url(./1.avif);
+
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        #ser {
+            width: 250px;
+            height: 30px;
+            border-radius: 10px;
+            background-color: aliceblue;
+        }
+
+        #btn {
+            width: 80px;
+            height: 30px;
+            border-radius: 5px;
+            background-color: rgb(179, 238, 163);
+        }
+
+        #btn:hover {
+            background-color: rgb(189, 201, 162);
+            color: black;
+        }
+
+        .card {
+            width: 400px;
+            border: 2px solid rgb(145, 129, 129);
+            border-radius: 10px;
+            box-shadow: 10px 10px 40px 30px rgb(179, 170, 38);
+        }
+
+        .temp {
+            width: 400px;
+            height: 200px;
+            border-radius: 5px;
+            background-color: antiquewhite;
+            background: url(./8.jpg);
+            color: white;
+
+            /* border: 1px solid black; */
+            /* background: url(https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1); */
+
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+
+        }
+
+        .te {
+            font-size: 50px;
+            margin-right: 10px;
+            /* color: rgb(250, 243, 243); */
+        }
+
+        .det {
+            font-size: 20px;
+            margin-left: 50px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url(./9.avif);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            justify-content: end;
+            align-items: center;
+            /* background-color: #cbe0f2; */
+
+        }
+
+        td {
+            height: 50px;
+            font-size: 25px;
+            width: 150px;
+            text-align: center;
+            /* color: white; */
+        }
+
+        img {
+            margin-right: 20px;
+        }
+
+        #io {
+            color: white;
+
+
+        }
+    </style>
+</head>
+
+<body>
+    <form action="">
+        <input type="search" id="ser">
+        <input type="submit" value="Search" id="btn">
+    </form>
+
+    <div class="card">
+        <div class="temp">
+            <p><span class="te">0</span> <span id="io"><img width="25px"
+                        src="https://icon-icons.com/icons2/758/PNG/512/celsius-degrees-sign_icon-icons.com_64204.png"
+                        alt=""></span></p>
+        </div>
+        <div class="container">
+
+            <table>
+                <tr>
+                    <!-- <td>grnd_level </td> -->
+                    <!-- <td><span class="tds">0</span> -->
+                    <!-- <span</span> -->
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>pressure</td>
+                    <td><span class="tds">0</span><span></span></td>
+                </tr>
+
+                <tr>
+                    <td>sunrise </td>
+                    <td><span class="tds">0</span><span></span></td>
+                </tr>
+                <tr>
+                    <td>
+                        sunse</td>
+                    <td><span class="tds">0</span><span></span></td>
+                </tr>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+    <script>
+
+
+        document.forms[0].addEventListener("submit", (e) => {
+            e.preventDefault();
+            var url = `https://api.openweathermap.org/data/2.5/weather?q=${e.target[0].value}&appid=bf89bc2cde67abeceea98d4c23a10716`
+
+            fetch(url).then((val) => {
+                return val.json()
+            }).then((val) => {
+                console.log(val)
+                var te = document.getElementsByClassName("te")
+                te[0].innerText = val["main"]["temp"].toFixed(0) - 273
+
+                var tds = document.getElementsByClassName("tds")
+                tds[0].innerText = val["main"]["pressure"]
+                tds[1].innerText = val["sys"]["sunrise"]
+
+                tds[2].innerText = val["sys"]["sunset"]
+
+            })
+
+        })
+    </script>
+</body>
+
+</html>

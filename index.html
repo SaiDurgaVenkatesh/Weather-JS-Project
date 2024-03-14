@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 103vh;
+            /* width: 100%; */
+            gap: 50px;
+            background: url(https://img.freepik.com/free-vector/detailed-jungle-background_52683-62079.jpg?t=st=1710417843~exp=1710421443~hmac=0737aad1374623576565906748c6f833ebf5ba2201d03a232af2de4de3142478&w=1060);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        #ser {
+            width: 250px;
+            height: 30px;
+            border-radius: 10px;
+            background-color: aliceblue;
+        }
+
+        #btn {
+            width: 80px;
+            height: 30px;
+            border-radius: 5px;
+            background-color: rgb(179, 238, 163);
+        }
+
+        #btn:hover {
+            background-color: rgb(189, 201, 162);
+            color: black;
+        }
+
+        .card {
+            width: 400px;
+            border: 2px solid rgb(145, 129, 129);
+            border-radius: 10px;
+            box-shadow: 10px 10px 40px 30px rgb(179, 170, 38);
+        }
+
+        .temp {
+            width: 400px;
+            height: 200px;
+            border-radius: 5px;
+            background-color: antiquewhite;
+            background: url(./8.jpg);
+            color: white;
+
+            /* border: 1px solid black; */
+            /* background: url(https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1); */
+
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+
+        }
+
+        .te {
+            font-size: 50px;
+            margin-right: 10px;
+            /* color: rgb(250, 243, 243); */
+        }
+
+        .det {
+            font-size: 20px;
+            margin-left: 50px;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: url(./9.avif);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            display: flex;
+            justify-content: end;
+            align-items: center;
+            /* background-color: #cbe0f2; */
+
+        }
+
+        td {
+            height: 50px;
+            font-size: 25px;
+            width: 150px;
+            text-align: center;
+            /* color: white; */
+        }
+
+        img {
+            margin-right: 20px;
+        }
+
+        #io {
+            color: white;
+
+
+        }
+
+        @media screen and (min-width:320px) and (max-width:375px) {
+
+            body {
+                .temp {
+                    width: 350px;
+                    height: 200px;
+                    border-radius: 5px;
+                    background-color: antiquewhite;
+                    background: url(./8.jpg);
+                    color: white;
+
+                    /* border: 1px solid black; */
+                    /* background: url(https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1); */
+
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+
+                }
+
+                .container {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    background: url(./9.avif);
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: cover;
+                    display: flex;
+                    width: 350px;
+                    justify-content: end;
+                    align-items: center;
+                    /* background-color: #cbe0f2; */
+
+                }
+
+                .card {
+                    width: 348px;
+                    border: 2px solid rgb(145, 129, 129);
+                    border-radius: 10px;
+                    box-shadow: 10px 10px 40px 30px rgb(179, 170, 38);
+                }
+
+
+
+            }
+
+
+        }
+    </style>
+</head>
+
+<body class="bd">
+    <form action="">
+        <input type="search" id="ser">
+        <input type="submit" value="Search" id="btn">
+    </form>
+
+    <div class="card">
+        <div class="temp">
+            <p><span class="te">0</span> <span id="io"><img width="25px"
+                        src="https://icon-icons.com/icons2/758/PNG/512/celsius-degrees-sign_icon-icons.com_64204.png"
+                        alt=""></span></p>
+        </div>
+        <div class="container">
+
+            <table>
+                <tr>
+                    <!-- <td>grnd_level </td> -->
+                    <!-- <td><span class="tds">0</span> -->
+                    <!-- <span</span> -->
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>pressure</td>
+                    <td><span class="tds">Pgh</span><span></span></td>
+                </tr>
+
+                <tr>
+                    <td>humidity</td>
+                    <td><span class="tds">0</span><span></span></td>
+                </tr>
+                <tr>
+                    <td>
+                        sunrise</td>
+                    <td><span class="tds">0</span><span></span></td>
+                </tr>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+
+    <script>
+
+
+        document.forms[0].addEventListener("submit", (e) => {
+            e.preventDefault();
+            var url = `https://api.openweathermap.org/data/2.5/weather?q=${e.target[0].value}&appid=bf89bc2cde67abeceea98d4c23a10716`
+
+            fetch(url)
+                .then((val) => {
+                    return val.json()
+                }).then((val) => {
+
+
+
+
+                    console.log(val)
+                    var te = document.getElementsByClassName("te")
+                    te[0].innerText = val["main"]["temp"].toFixed(0) - 273
+
+
+
+
+                    var tds = document.getElementsByClassName("tds")
+                    tds[0].innerText = val["main"]["pressure"]
+                    tds[1].innerText = val["main"]["humidity"]
+                    tds[2].innerText = val["sys"]["sunrise"]
+
+
+
+
+
+                    var temp = val["main"]["temp"]
+                    temp1 = temp - (273.15)
+                    console.log(temp1);
+
+
+                    if (temp1 <= 20) {
+                        var a = document.getElementsByClassName("temp")
+                        // a[0].style. = url("https://wallpaper.mob.org/gallery/tag=cold/")
+                        a[0].style.backgroundImage = "url(https://img.freepik.com/free-photo/view-london-city-sunset_268835-1397.jpg?t=st=1710421034~exp=1710424634~hmac=667a79e22ad9def5bd831e64d4562cf35115821d5807d977f4ece73627b68be6&w=1060)";
+                        a[0].style.backgroundPosition = "center"
+                        a[0].style.backgroundSize = "cover"
+
+                        var b = document.getElementsByClassName("bd")
+                        b[0].style.backgroundImage = "url('https://wallpaperaccess.com/full/101744.jpg')";
+                        b[0].style.backgroundPosition = "center"
+                        b[0].style.backgroundSize = "cover"
+
+                    }
+
+                    else if (temp1 <= 30) {
+                        var a = document.getElementsByClassName("temp")
+                        // a[0].style. = url("https://wallpaper.mob.org/gallery/tag=cold/")
+                        a[0].style.backgroundImage = "url('https://as2.ftcdn.net/v2/jpg/02/72/55/83/1000_F_272558375_UPJrTeR7QkKiTgF8JyYKtf3Muxd5I2Qd.jpg')";
+                        a[0].style.backgroundPosition = "center"
+                        a[0].style.backgroundSize = "cover"
+
+
+                        var a = document.getElementsByClassName("bd")
+                        // a[0].style. = url("https://wallpaper.mob.org/gallery/tag=cold/")
+                        a[0].style.backgroundImage = "url('https://wallpapercave.com/wp/wp1900699.jpg')";
+                        a[0].style.backgroundPosition = "center"
+                        a[0].style.backgroundSize = "cover"
+
+
+                    }
+
+                    else if (temp1 <= 34) {
+
+                        var a = document.getElementsByClassName("temp")
+                        a[0].style.backgroundImage = "url('https://img.freepik.com/free-vector/comic-style-background_23-2148836600.jpg?t=st=1710419949~exp=1710423549~hmac=5bb3c321acda87e208eb2463651952fc459b1e30be263a9d6cc744cb633a083f&w=1060')";
+                        a[0].style.backgroundPosition = "center"
+                        a[0].style.backgroundSize = "cover"
+
+                        var a = document.getElementsByClassName("bd")
+                        a[0].style.backgroundImage = "url('https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/fea07527527899.5636688808027.png')";
+                        a[0].style.backgroundPosition = "center"
+                        a[0].style.backgroundSize = "cover"
+
+
+
+                    }
+
+                    else if (temp1 <= 39) {
+                        var a = document.getElementsByClassName("temp")
+                        // a[0].style. = url("https://wallpaper.mob.org/gallery/tag=cold/")
+                        a[0].style.backgroundImage = "url('https://wallpapers.com/images/hd/aesthetic-summer-sky-min00ymwt6dhbi5b.webp')";
+                        a[0].style.backgroundPosition = "center"
+                        a[0].style.backgroundSize = "cover"
+
+                        var a = document.getElementsByClassName("bd")
+                        a[0].style.backgroundImage = "url(https://th.bing.com/th/id/OIP.Ws6YVlMrPmMEDj8BIrA7QwHaEu?rs=1&pid=ImgDetMain)"
+                        a[0].style.backgroundSize = "cover"
+
+                    }
+                })
+
+
+
+        })
+
+
+    </script>
+</body>
+
+</html>
